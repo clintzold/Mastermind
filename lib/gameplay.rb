@@ -20,7 +20,7 @@ module Gameplay
   #Checks for a winning code and breaks guessing cycle if true
   def eql?(code, guess)
     if code == guess
-      puts "Code was broken!\n #{code}"
+      puts "\nCode was broken!\n #{code}"
       return true
     else 
       return false
@@ -37,9 +37,9 @@ module Gameplay
     end
     colors_included = matches.uniq.length
     if colors_included > 0
-      print "#{colors_included} colors are correct."
+      print "\n#{colors_included} colors are correct. "
     else
-      print "No colors are correct."
+      print "\nNo colors are correct. "
     end
   end
 
@@ -51,7 +51,8 @@ module Gameplay
       elsif answer == 'N'
         return false
       else
-        puts 'Invalid input. Play again? (Y) or (N)...'
+        puts "\nInvalid input. Play again? (Y) or (N)..."
+        answer = gets.chomp.upcase
       end
     end
   end
