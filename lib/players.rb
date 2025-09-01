@@ -1,11 +1,10 @@
 class Players
   include Gameplay
-  attr_accessor :code, :name, :type
+  attr_accessor :code, :name 
 
-  def initialize(type)
+  def initialize
     @code = [] 
     @name = ''
-    @type = type
   end
 
 
