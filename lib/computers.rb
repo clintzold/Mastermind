@@ -15,8 +15,7 @@ class Computers
   def enter_code
 
     code = []
-    options = self.options
-    options.each do |item|
+    self.options.each do |item|
       num = item.length
         choice = rand(num)
         code << item[choice]
