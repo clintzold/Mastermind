@@ -2,12 +2,9 @@ require 'pry-byebug'
 require 'io/console'
 require_relative 'lib/gameplay'
 require_relative 'lib/players'
+require_relative 'lib/computers'
 include Gameplay
 
-maker = Players.new()
-maker.name = "Code-Master"
-breaker = Players.new()
-breaker.name = "Code-Breaker"
 
 print "
 **************************************************************************************
@@ -19,6 +16,21 @@ print "
 *╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═════╝ *
 **************************************************************************************
 "
+game_choice = (play_choice)
+if game_choice == 1
+  maker = Computers.new()
+  breaker = Players.new()
+elsif game_choice == 2
+  maker = Players.new()
+  breaker = Computers.new()
+else
+  maker = Players.new()
+  breaker = Players.new()
+end
+
+maker.name = "Code-Master"
+breaker.name = "Code-Breaker"
+
 #Main gameplay cycle
 loop do
 
@@ -33,7 +45,13 @@ loop do
     guess = breaker.code
     break if eql?(code, guess)
     color_match(code, guess)
-    exact_match(code, guess)
+    if game_choice == 2
+      breaker.adjust_options(exact_match(code, guess))
+      puts "Press a key for AI to make next guess..."
+      gets
+    else
+      exact_match(code, guess)
+    end
     guesses += 1
   end
   

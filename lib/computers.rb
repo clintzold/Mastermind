@@ -38,5 +38,3 @@ class Computers
   end
 
 end
-binding.pry
-puts "goodbye"
