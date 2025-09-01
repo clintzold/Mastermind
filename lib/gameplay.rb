@@ -3,7 +3,7 @@ module Gameplay
   def play_choice
 
     options = [1, 2, 3]
-    puts "\nWelcome to MASTERMIND. Select a play option...\n(1) Code-Master = AI, Code-Maker = Player\n(2) Code-Master = Player, Code-Break = AI\n(3) Code-Master = Player, Code-Breaker = Player\n"
+    puts "\nWelcome to MASTERMIND. Select a play option...\n(1) Code-Master = AI, Code-Maker = Player\n(2) Code-Master = Player, Code-Breaker = AI\n(3) Code-Master = Player, Code-Breaker = Player\n"
     loop do
       choice = gets.chomp.to_i
       if options.any? {|num| num == choice}
