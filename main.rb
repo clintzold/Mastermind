@@ -1,5 +1,3 @@
-require 'pry-byebug'
-require 'io/console'
 require_relative 'lib/gameplay'
 require_relative 'lib/players'
 require_relative 'lib/computers'
@@ -47,6 +45,7 @@ loop do
     guess = breaker.code
     break if eql?(code, guess)
     color_match(code, guess)
+    #Allows AI to revise its guesses based on hints
     if game_choice == 2
       if adjustments < 2
         breaker.adjust_options(exact_match(code, guess))
@@ -54,6 +53,7 @@ loop do
         exact_match(code, guess)
       end
       adjustments += 1
+      #Stops game from cycling to a win instantaneously
       puts "Press a key for AI to make next guess..."
       gets
     else
@@ -69,4 +69,5 @@ loop do
   break if !check_play_again(answer)
   
 end
+
 puts "\n\nGoodbye!"
