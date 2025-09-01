@@ -36,6 +36,8 @@ loop do
 
   #Tracks guesses and sets maker code until a winner is determined
   guesses = 0
+  #Counter that Stops AI from inevitably calculating exact code
+  adjustments = 0
   maker.enter_code
   code = maker.code
 
@@ -46,7 +48,12 @@ loop do
     break if eql?(code, guess)
     color_match(code, guess)
     if game_choice == 2
-      breaker.adjust_options(exact_match(code, guess))
+      if adjustments < 2
+        breaker.adjust_options(exact_match(code, guess))
+      else
+        exact_match(code, guess)
+      end
+      adjustments += 1
       puts "Press a key for AI to make next guess..."
       gets
     else
