@@ -37,4 +37,11 @@ class Computers
     
   end
 
+  #reset options after round
+  def reset_options
+    self.options = 
+        [ ['red', 'blue', 'green', 'pink'], ['red', 'blue', 'green', 'pink'], 
+         ['red', 'blue', 'green', 'pink'], ['red', 'blue', 'green', 'pink'] ]
+  end
+
 end

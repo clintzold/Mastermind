@@ -55,8 +55,8 @@ loop do
     guesses += 1
   end
   
+  breaker.reset_options if game_choice == 2#Repopulate AI @options for next round of play
   puts "\nCode-Maker wins with code: #{code}" if guesses == 5
-
   print "\nPlay again? (Y) or (N): "
   answer = gets.chomp.upcase
   break if !check_play_again(answer)
